@@ -1,0 +1,21 @@
+name: Artifact test
+
+on:
+  push:
+    branches: [main]
+
+env:
+  ARTIFACT_NAME: README.md
+
+jobs:
+  artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - run: tree
+      - uses: actions/upload-artifact@v4.3.4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          
+
+          
