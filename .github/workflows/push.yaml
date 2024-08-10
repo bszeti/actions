@@ -2,7 +2,7 @@ name: Artifact test
 
 on:
   push:
-    branches: [*]
+    branches: ['*']
 
 jobs:
   list:
