@@ -15,4 +15,4 @@ jobs:
       - name: List
         run: |
           ls -las
-          find ./ -type f -d 1 -exec echo {} \;  -exec cat {} \; -exec echo \;
+          find ./ -type f -maxdepth 1 -exec echo {} \;  -exec cat {} \; -exec echo \;
