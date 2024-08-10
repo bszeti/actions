@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  list:
     runs-on: ubuntu-latest
     steps:
 
@@ -16,3 +16,4 @@ jobs:
         run: |
           ls -las
           find ./ -type f -maxdepth 1 -exec echo {} \;  -exec cat {} \; -exec echo \;
+          git log -3
