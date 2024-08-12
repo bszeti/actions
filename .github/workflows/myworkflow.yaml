@@ -1,4 +1,4 @@
-name: Artifact test
+name: Workflow dispatch
 
 on:
 #   pull_request:
@@ -17,7 +17,7 @@ jobs:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: |
-          echo $EVENT_CONTEXT
+          echo $EVENT_CONTEXT | jq .
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,8 +26,12 @@ jobs:
         # Any job referencing the environment will not run until at least one reviewer approves the job.
         # environment: production
         run: |
+          echo GITHUB_REPOSITORY=$GITHUB_REPOSITORY
           echo GITHUB_SHA=$GITHUB_SHA
           echo GITHUB_REF=$GITHUB_REF
           ls -las
           find ./ -type f -maxdepth 1 -exec echo {} \;  -exec cat {} \; -exec echo \;
           git log -3
+
+      - name: Fail
+        run: false
